@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a routerLink="/home-page" class="navbar-brand">ABC Bank</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a routerLink="/home-page/update-page" style="font-size: medium;">{{name}}</a></li>
+            <li><a routerLink="/home-page/changepassword-page" style="font-size: medium;">changepassword</a></li>
+            <li><a routerLink='/home-page/applyloan-page' style="font-size: medium;">Apply Loan</a></li>
+            <li><a  role="button" (click)="onLogout()" style="font-size: medium;"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+        </ul>
+    </div>
+</nav>

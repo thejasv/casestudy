@@ -1,0 +1,137 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<br>
+<h3 class="text-center">Update Form</h3>
+<hr>
+<div class="container">
+    <form #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm.value)">
+        <div class="form-group">
+            <input type="text" class="form-control" pattern="[a-zA-Z ]*" id="name"  placeholder="Name" [ngModel]="acc.name" name="name" required>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <input type="text" class=" form-control" id="username" placeholder="UserName" [ngModel]="acc.username" name="username" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text"  id="accountnumber"  [ngModel]="acc.accountnumber" name="accountnumber" class="form-control" placeholder="citizenstatus">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <select id="guardiantype"  [ngModel]="acc.guardiantype" name="acc.guardiantype"  class="form-control">
+                    <option value="" disabled hidden selected>select guardiantype</option>
+                    <option value="father">Father</option>
+                    <option value="husband">Husband</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="GuardianName" id="guardianname"   [ngModel]="acc.guardianname" name="guardianname"  pattern="[a-zA-Z ]*" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <textarea rows="1" id="address" class="form-control" placeholder="Address" [ngModel]="acc.address" name ="address"   required></textarea>
+            </div>
+            <div class="col-md-4">
+               <select class="form-control" name="citizenship" [ngModel]="acc.citizenship" name ="citizenship" id="citizenship">
+                   <option value="" disabled hidden selected>choose citizenship</option>
+                   <option value="indian">Indian</option>
+                   <option value="foreign">Foreign</option>
+               </select>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" [ngModel]="acc.country" name ="country"  placeholder="country" >
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <select class="form-control" id="state"  [ngModel]="acc.state" name="state">
+                    <option value="" disabled hidden selected>Choose state</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="tamilnadu">TamilNadu</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="andrapradesh">Andra Pradesh</option>
+                    <option value="telangana">Telangana</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="email" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email"  [ngModel]="acc.email"  name="email" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control"   [ngModel]="acc.contactnumber" name="contactnumber" pattern="[6-9]{1}[0-9]{9}"   placeholder="Contact Number"  required>
+            </div>
+            <div class="col-md-3">
+                <select id="gender" class="form-control"  [ngModel]="acc.gender" name="gender"  required>
+                    <option value="" disabled hidden selected>select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <select class="form-control" id="maritalstatus" [ngModel]="acc.maritalstatus" name="maritalstatus">
+                    <option value="" disabled hidden selected>select maritialstatus</option>
+                    <option value="unmarried">Unmarried</option>
+                    <option value="married">Married</option>
+                </select>
+            </div>
+            <div class=" col-md-3">
+                <input type="text" class="form-control"  
+                id="dateofbirth"  max="{{maxdate | date:'yyyy-MM-dd'}}" min="{{mindate | date:'yyyy-MM-dd'}}" 
+                 [ngModel]="acc.dateofbirth" name="dateofbirth" onfocus="(this.type='date')"required placeholder="Date of Birth"  >
+            </div>
+            <div class="col-md-3">
+                <input type="text"  id="citizenstatus"  [ngModel]="acc.citizenstatus" name="citizenstatus" class="form-control" placeholder="citizenstatus" >
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="branchname"  [ngModel]="acc.branchname" name="branchname" class="form-control" placeholder="branchname" name="branchname">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <select  [ngModel]="acc.accounttype" name="accounttype" class="form-control" (change)="onAccountType($event)">
+                    <option value="" disabled hidden selected>choose account type</option>
+                    <option value="savings">Savings</option>
+                    <option value="salary">Salary</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="number" id="initialdeposit" [ngModel]="acc.initialdeposit" name="initialdeposit" class="form-control" placeholder="initialdeposit"  [min]="initialDepositAmount" >
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" id="identificationtype"  [ngModel]="acc.identificationtype" name="identificationtype" id="identificationtype"  (change)="onIdType($event)">
+                    <option value="" disabled hidden selected>choose identificationtype</option>
+                    <option value="aadhar">Aadhar</option>
+                    <option value="pancard">Pancard</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" [ngModel]="acc.idcardnumber" name="idcardnumber" class="form-control" [placeholder]="idcardplaceholder" [pattern]="idpattern"> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input type="text"  class="form-control"  [ngModel]="acc.referenceaccountholdername" name="referenceaccountholdername" id="referenceaccountholdername"  placeholder="Reference Holder Name" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control"  [ngModel]="acc.referenceaccountholderaccountnumber" name="referenceaccountholderaccountnumber"  id="referenceaccountholderaccountnumber" placeholder="Reference Holder Acc number" required>
+            </div>
+            <div class="col-md-3">
+                <textarea rows="1" class="form-control"  [ngModel]="acc.referenceaccountholderaddress" name="referenceaccountholderaddress"  id="referenceaccountholderaddress" placeholder="Reference holder address" required></textarea>
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" [ngModel]="today" name="registerationdate" id="registerationdate" placeholder="Registeration Date"  required disabled>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" type="submit" [disabled]="updateForm.invalid">Update</button>
+            </div>
+        </div>
+    </form>
+   
+</div>

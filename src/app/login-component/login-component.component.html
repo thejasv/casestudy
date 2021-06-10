@@ -1,0 +1,39 @@
+<h1 class="text-center">ABC Bank</h1>
+<br>
+<hr>
+<div class="text-center">
+        <h3>Login</h3>  
+</div>
+<hr>
+<div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <div class="row">
+        <div class="col-xs-12">
+            <label for="username">UserName</label> 
+            <input type="text" class="form-control" id="username" ngModel name="username" placeholder="Enter UserName">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password"  ngModel name="password"placeholder="Enter Password">
+            <a routerLink="/forgotpassword-page" >Forgot Password ?</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <button class="btn btn-success" type="submit" [disabled]="loginForm.invalid">Login</button>
+        </div>
+    </div>
+    <br>
+    </form>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <p *ngIf="invalid">Invalid Credentials</p>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,126 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<br>
+<h3 class="text-center">Apply Loan Form</h3>
+<hr>
+<div class="container">
+    <div class="row ">
+        <select class="col-md-2" (change)="onLoanType($event)">
+            <option value="" disabled hidden selected>Select Loan Type</option>
+            <option value="personalloan">Personal Loan</option>
+            <option value="educationloan">Education Loan</option>
+        </select>
+    </div>
+    <br>
+    <form *ngIf="educationloanform" #Educationloan="ngForm" (ngSubmit)="onSubmiteduloan(Educationloan.value)">
+        <div class="form-group row">
+            <div class="col-md-3 ">
+                <input class=" form-control" type="number" placeholder=" Education Loan Amount" ngModel name="loanamount" id="loanamount" min= required>
+            </div>
+           <div class="col-md-3">
+                <input class="form-control" type="text" placeholder="Loan Apply Date" ngModel name="loanapplydate" id="loanapplydate" onfocus="(this.type='date')" required>
+           </div>
+            <div class="col-md-3">
+                <input class="col-md-3 form-control" type="text" placeholder="Loan Issue Date" ngModel name="loanissuedate" id="loanissuedate" onfocus="(this.type='date')" required>
+            </div>
+            <div class="col-md-3">
+                <input class="col-md-3 form-control" type="number" placeholder="Rate of interest" name="rateofinterest" id="rateofinterest" [ngModel]="roi" disabled required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <select class="form-control" ngModel name="duration" id="duration" required >
+                    <option value="" disabled selected hidden>Select Duartion</option>
+                    <option value=5>5 years</option>
+                    <option value=10>10 years</option>
+                    <option value=15>15 years</option>
+                    <option value=20>20 years</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Course Name" ngModel name="course" id="course" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" placeholder="Course Fee" ngModel name="coursefee" id="coursefee" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Father Name" ngModel name="fathername" id="fathername" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Father occupation" ngModel name="fatheroccupation" id="fatheroccupation" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" placeholder="Father total Experience" ngModel name="fathertotalexperience" id="fathertotalexperience" (change)="onTotalExperienceInput($event)" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" placeholder="father exp in current company" ngModel name="fatherexperiencecurrentcompany" id="fatherexperiencecurrentcompany" [max]="experience" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Ration card number" ngModel name="rationcardnumber" id="rationcardnumber" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input type="number" class="form-control" placeholder="Annual Income" ngModel name="annualincome" id="annualincome" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" type="submit" [disabled]="Educationloan.invalid">Apply Loan</button>
+            </div>
+        </div>
+        
+    </form>
+    <form *ngIf="personalloanform" #Personalloan="ngForm" (ngSubmit)="onSubmitpersonalloan(Personalloan.value)">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input class="form-control" type="number" placeholder=" personal loan amount" ngModel name="loanamount" id="loanamount" required>
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" placeholder="Loan Apply Date" ngModel name="loanapplydate" id="loanapplydate" onfocus="(this.type='date')" required>
+           </div>
+            <div class="col-md-3">
+                <input class="col-md-3 form-control" type="text" placeholder="Loan Issue Date" ngModel name="loanissuedate" id="loanissuedate" onfocus="(this.type='date')" required>
+            </div>
+            <div class="col-md-3">
+                <input class="col-md-3 form-control" type="number" placeholder="Rate of interest" [ngModel]="roi" name="rateofinterest" id="rateofinterest" disabled required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <select class="form-control" ngModel name="duration" id="duration" required>
+                    <option value="" disabled selected hidden>Select Duartion</option>
+                    <option value=5>5 years</option>
+                    <option value=10>10 years</option>
+                    <option value=15>15 years</option>
+                    <option value=20>20 years</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" ngModel name="companyname" id="companyname" placeholder="Company name" required >
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" ngModel name="designation" id="designation" placeholder="designation" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" ngModel name="totalexperience" id="totalexperience" placeholder="Total years of Experience " required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <input type="number" class="form-control" ngModel name="experienceincurrentcompany" id="experienceincurrentcompany" placeholder="Experience in Current company" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" ngModel name="annualincome" id="annualincome" placeholder="Annual Income" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary" [disabled]="Personalloan.invalid">Apply Loan</button>
+            </div>
+        </div>
+    </form>
+</div>
